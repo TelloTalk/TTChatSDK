@@ -37,11 +37,11 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 ### Configuration
 For setting live API in sdk
 ```swift
-        TTChat.shared.environment = .live
+TTChat.shared.environment = .live
 ```
 For setting staging API in sdk
 ```swift
-        TTChat.shared.environment = .staging
+TTChat.shared.environment = .staging
 ```
 
 ### Register User
