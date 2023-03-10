@@ -10,7 +10,7 @@ Add **TTChatSDK.xcframework** file provided into your application, then select y
 
 *or*
 ```
-pod 'TTChatSDK'
+pod 'TTChatSDK', '~> 2.0.5'
 ````
 
 ## Usage
