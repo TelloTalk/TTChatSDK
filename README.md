@@ -43,6 +43,7 @@ For setting staging API in sdk
 ```swift
 TTChat.shared.environment = .staging
 ```
+Note: It is important to ensure that the above variable is set before registering. This is because the variable will only be initialized once, and if it is set after any function or API call, it will not have any effect. Therefore, it is crucial to set the variable at the appropriate time to ensure that it is properly initialized.
 
 ### Register User
 When you're logging in or signing up the application for the first time you need to call this, if there is error then you will get value in `errorString` otherwise it will be nil
