@@ -10,7 +10,7 @@ Add **TTChatSDK.xcframework** file provided into your application, then select y
 
 *or*
 ```
-pod 'TTChatSDK', '~> 2.0.5'
+pod 'TTChatSDK'
 ````
 
 ## Usage
@@ -33,7 +33,6 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 }
 ```
 
-
 ### Configuration
 For setting live API in sdk
 ```swift
@@ -44,21 +43,6 @@ For setting staging API in sdk
 TTChat.shared.environment = .staging
 ```
 Note: It is important to ensure that the above variable is set before registering. This is because the variable will only be initialized once, and if it is set after any function or API call, it will not have any effect. Therefore, it is crucial to set the variable at the appropriate time to ensure that it is properly initialized.
-
-### Register User
-When you're logging in or signing up the application for the first time you need to call this, if there is error then you will get value in `errorString` otherwise it will be nil
-```swift
-TTChat.shared.registerUser(profileId: "<ProfileId>", name: "<Name>", mobileNumber: "<Mobile Number>") { [weak self] (buddy, errorString) in
-    guard let self = self else { return }
-}
-```
-
-### Corporate List UI of TelloTalk SDK
-
-You can directly open corporate list, you can set `title` of that list if you want otherwise passed `nil`
-```swift
-TTChat.shared.showCorporateUsers(controller: self, title: "Title")
-```
 
 ### Receiving Messages Notifications (APNS)
 
@@ -88,6 +72,48 @@ func application(_ application: UIApplication, didRegisterForRemoteNotifications
 #### Step 4:
 Turn On `Push Notifications` from *Capabilities* by selecting your target
 
+### Migration
+```swift
+TTChat.shared.migrateTTChatSDK()
+```
+
+### Register User
+When you're logging in or signing up the application for the first time you need to call this, if there is error then you will get value in `errorString` otherwise it will be nil
+```swift
+TTChat.shared.registerUser(profileId: "<ProfileId>", name: "<Name>", mobileNumber: "<Mobile Number>") { [weak self] (buddy, errorString) in
+    guard let self = self else { return }
+}
+```
+
+### Corporate List UI of TelloTalk SDK
+
+#### Method 1:
+You can directly open corporate list, you can set `title` of that list if you want otherwise pass `nil`
+```swift
+TTChat.shared.showCorporateUsers(controller: self, title: "Title")
+```
+
+#### Method 2:
+You can fetch list of departments by implementing 'getCorporateDepartments' function
+
+```swift
+ TTChat.shared.getCorporateDepartments(dataSource: self) { (error) in 
+    print(error)
+ }
+```
+Conform 'DepartmentUpdates' protocol and get departments in 'departmentFetched' function
+
+```swift
+ func departmentFetched(departments: [CorporateDepartments]) {
+        print(departments)
+    }
+```
+Finally show chat screen by calling 'showChatScreen' function
+
+```swift
+TTChat.shared.showChatScreen(controller: self, contactId: contactId, deptName: deptName, isCorporateContact: isCorporateContact, dType: dType, firstMessage: firstMessage)
+```
+
 ### Unread Message Count:
 ```swift
 TTChat.shared.getTotalUnreadMessageCount { [weak self] (count) in
@@ -105,7 +131,7 @@ TTChat.shared.getTotalUnreadMessageCount { [weak self] (count) in
 
 ### UI Customizations:
 ```swift
-TTChat.shared.settings.themeColor = .green
+
 TTChat.shared.settings.outgoingMessageBubbleColor = .green
 TTChat.shared.settings.outgoingMessageBubbleTextColor = .white
 TTChat.shared.settings.incomingMessageBubbleColor = .green
@@ -116,7 +142,9 @@ TTChat.shared.settings.timeOutgoingColor = UIColor.init(white: 0.9, alpha: 1)
 TTChat.shared.settings.timeIncomingColor = UIColor.init(white: 0.9, alpha: 1)
 TTChat.shared.settings.audioRecordButtonColor = .systemGreen
 TTChat.shared.settings.sendButtonColor = .systemGreen
-TTChat.shared.settings.chatbotButtonBaseColor = .systemGreen
-TTChat.shared.settings.chatbotButtonSelectedColor = .systemGreen
+TTChat.shared.settings.navBarTintColor = .black
+TTChat.shared.settings.navBarColor = .white
 TTChat.shared.settings.primaryColor = .systemGreen
+TTChat.shared.settings.backButtonIcon = UIImage(named:"back_button")!
+TTChat.shared.settings.chatScreenBackgroundColor = .gray
 ```
