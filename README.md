@@ -72,11 +72,6 @@ func application(_ application: UIApplication, didRegisterForRemoteNotifications
 #### Step 4:
 Turn On `Push Notifications` from *Capabilities* by selecting your target
 
-### Migration
-```swift
-TTChat.shared.migrateTTChatSDK()
-```
-
 ### Register User
 When you're logging in or signing up the application for the first time you need to call this, if there is error then you will get value in `errorString` otherwise it will be nil
 ```swift
