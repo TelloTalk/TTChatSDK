@@ -20,6 +20,22 @@ Add `https://github.com/TelloTalk/TTChatSDK.git` as a swift package.
 
 ## Usage
 
+### Configuration
+For setting live API in sdk
+```swift
+TTChat.shared.environment = .live
+```
+For setting staging API in sdk
+```swift
+TTChat.shared.environment = .staging
+```
+For setting self hosted API in sdk
+```swift
+TTChat.shared.environment = .selfHosted(url:"<SELF_HOSTED_API>")
+```
+
+Note: It is important to ensure that the above variable is set before registering. This is because the variable will only be initialized once, and if it is set after any function or API call, it will not have any effect. Therefore, it is crucial to set the variable at the appropriate time to ensure that it is properly initialized.
+
 ### Initializaition
 
 ```swift
@@ -37,22 +53,6 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
     return true    
 }
 ```
-
-### Configuration
-For setting live API in sdk
-```swift
-TTChat.shared.environment = .live
-```
-For setting staging API in sdk
-```swift
-TTChat.shared.environment = .staging
-```
-For setting self hosted API in sdk
-```swift
-TTChat.shared.environment = .selfHosted(url:"<SELF_HOSTED_API>")
-```
-
-Note: It is important to ensure that the above variable is set before registering. This is because the variable will only be initialized once, and if it is set after any function or API call, it will not have any effect. Therefore, it is crucial to set the variable at the appropriate time to ensure that it is properly initialized.
 
 ### Receiving Messages Notifications (APNS)
 
@@ -130,7 +130,6 @@ TTChat.shared.getTotalUnreadMessageCount { [weak self] (count) in
 ### Permissions for Chat:
 *  `NSCameraUsageDescription` - For sending images/video from camera
 *  `NSPhotoLibraryUsageDescription` - For sending images/video from photo library
-*  `NSContactsUsageDescription` - For sending contacts and syncing contacts (if required)
 *  `NSLocationWhenInUseUsageDescription` - For sending location message
 *  `NSMicrophoneUsageDescription` - For sending audio note message
 
