@@ -14,8 +14,6 @@ let package = Package(
     
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.4.4")),
-        .package(url: "https://github.com/jdg/MBProgressHUD.git", .upToNextMajor(from: "1.2.0")),
         .package(url: "https://github.com/realm/realm-swift.git", .exact("10.20.1")),
         .package(url: "https://github.com/SwiftyJSON/SwiftyJSON.git", .exact("5.0.1")),
         .package(url: "https://github.com/SDWebImage/SDWebImage.git", .exact("5.14.3"))
@@ -34,8 +32,6 @@ let package = Package(
             dependencies: [
                 .target(name: "TTChatSDK",
                         condition: .when(platforms: [.iOS])),
-                .byName(name: "Alamofire", condition: .when(platforms: [.iOS])),
-                "MBProgressHUD",
                 .byName(name: "SwiftyJSON", condition: .when(platforms: [.iOS])),
                 .byName(name: "SDWebImage", condition: .when(platforms: [.iOS])),
                 .product(name: "RealmSwift", package: "realm-swift")
@@ -45,8 +41,8 @@ let package = Package(
             exclude: []),
         .binaryTarget(
             name: "TTChatSDK",
-            url: "https://mujtabaimages.s3.ap-south-1.amazonaws.com/TTChatSDK/ios/2.5.1/spm/TTChatSDK.xcframework.zip",
-            checksum: "dd6763ed7a5609127debb0d40ccf76de79a8cc013dab7764e183c3017258e75e")
+            url: "https://mujtabaimages.s3.ap-south-1.amazonaws.com/TTChatSDK/ios/2.5.2/spm/TTChatSDK.xcframework.zip",
+            checksum: "84be0be247c3ef37adb9b9044e0d583a1cd862318c3ae327835e1fe8d5d8fb04")
         
     ]
 )
