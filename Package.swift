@@ -41,8 +41,8 @@ let package = Package(
             exclude: []),
         .binaryTarget(
             name: "TTChatSDK",
-            url: "https://mujtabaimages.s3.ap-south-1.amazonaws.com/TTChatSDK/ios/2.5.2/spm/TTChatSDK.xcframework.zip",
-            checksum: "84be0be247c3ef37adb9b9044e0d583a1cd862318c3ae327835e1fe8d5d8fb04")
+            url: "https://mujtabaimages.s3.ap-south-1.amazonaws.com/TTChatSDK/ios/2.5.2/spm/bitcode/TTChatSDK.xcframework.zip",
+            checksum: "f91348f1ffa69612340c67ff72deeaf87b3a642340b5ba2262aa3472e7e64677")
         
     ]
 )
