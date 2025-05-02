@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
     s.swift_version = '5.5'
     s.ios.deployment_target = '12.0'
     s.ios.vendored_frameworks = 'TTChatSDK/TTChatSDK.xcframework'
-    s.dependency "RealmSwift","~> 20.0.2"
+    s.dependency "RealmSwift","~> 20.0.1"
     s.dependency "SwiftyJSON"
     s.dependency "SDWebImage"
     s.dependency "SocketIO"
