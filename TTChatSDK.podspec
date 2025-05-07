@@ -8,16 +8,19 @@ Pod::Spec.new do |s|
     s.source = { :http => 'https://github.com/TelloTalk/TTChatSDK/releases/download/2.6.2/TTChatSDK.xcframework.zip' }
 
     s.pod_target_xcconfig = {
+      'EXCLUDED_ARCHS' => 'arm64',
       'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
     }
-    s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+    s.user_target_xcconfig = { 
+      'EXCLUDED_ARCHS' => 'arm64',
+      'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
+    }
 
     s.swift_version = '5.5'
     s.ios.deployment_target = '12.0'
     s.platform = :ios, '12.0'
-    s.vendored_frameworks = 'TTChatSDK.xcframework.zip'
-    s.dependency "RealmSwift","~> 20.0.1"
+    s.vendored_frameworks = 'TTChatSDK.xcframework'
     s.dependency "SwiftyJSON"
     s.dependency "SDWebImage"
-    s.dependency "SocketIO"
+    s.dependency "Socket.IO-Client-Swift", "~> 16.1.1"
 end
