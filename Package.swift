@@ -15,8 +15,9 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/SwiftyJSON/SwiftyJSON.git", .exact("5.0.1")),
-        .package(url: "https://github.com/SDWebImage/SDWebImage.git", .exact("5.19.1")),
-        .package(url: "https://github.com/socketio/socket.io-client-swift", .revision("175da8b"))
+        .package(url: "https://github.com/SDWebImage/SDWebImage.git", .branch("master")),
+        .package(url: "https://github.com/socketio/socket.io-client-swift", .branch("master")),
+        .package(url: "https://github.com/realm/realm-swift.git", .exact("20.0.2"))
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -34,15 +35,14 @@ let package = Package(
                         condition: .when(platforms: [.iOS])),
                 .byName(name: "SwiftyJSON", condition: .when(platforms: [.iOS])),
                 .byName(name: "SDWebImage", condition: .when(platforms: [.iOS])),
-                .product(name: "SocketIO", package: "socket.io-client-swift")
-                
+                .product(name: "SocketIO", package: "socket.io-client-swift"),
+                .product(name: "RealmSwift", package: "realm-swift")
             ],
             path: "SwiftPM-PlatformExclude/TTChatSDKWrapper",
             exclude: []),
         .binaryTarget(
             name: "TTChatSDK",
             url: "https://github.com/TelloTalk/TTChatSDK/releases/download/2.6.2/TTChatSDK.xcframework.zip",
-            checksum: "3ca72195eb21f58745a2a6ae67fdba04e2b2ced07c4e425ca1907abfb4f7631e")
-        
+            checksum: "2a8e1d03a338c1f2f593518cb239d226f7b0d96419ddafc985c3cd0ab88a6351")
     ]
 )
