@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name           = 'TTChatSDK'
-    s.version        = '2.6.3'
+    s.version        = '2.6.4'
     s.summary        = 'Corporate Chat SDK and UI for iOS Devs'
     s.homepage       = 'https://tilismtechservices.com/sdkportal/'
     s.license        = { :type => 'MIT' }
@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
     s.swift_version = '5.5'
     s.ios.deployment_target = '12.0'
     s.platform = :ios, '12.0'
-    s.vendored_frameworks = 'TTChatSDK.xcframework'
+    s.ios.vendored_frameworks = 'TTChatSDK.xcframework'
     s.dependency "SwiftyJSON"
     s.dependency "SDWebImage"
     s.dependency "Socket.IO-Client-Swift", "~> 16.1.1"
